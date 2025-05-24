@@ -44,13 +44,21 @@ public class BurgerTest {
     }
 
     @Test
-    public void checkMoveIngredient() {
+    public void moveIngredient_ShouldPlaceMovedIngredientAtNewIndex() {
         burger = new Burger();
         burger.addIngredient(sauce);
         burger.addIngredient(filling);
         burger.moveIngredient(0, 1);
         Assert.assertEquals("Перемещаемый ингредиент - не на новом месте.", burger.ingredients.get(0), filling);
-        Assert.assertEquals("Ингредиент не смещен с нового места.", burger.ingredients.get(1), sauce);
+    }
+
+    @Test
+    public void moveIngredient_ShouldShiftIngredientFromOldIndex() {
+        burger = new Burger();
+        burger.addIngredient(sauce);
+        burger.addIngredient(filling);
+        burger.moveIngredient(0, 1);
+        Assert.assertEquals("Ингредиент не смещён с нового места", burger.ingredients.get(1), sauce);
     }
 
     @Test
